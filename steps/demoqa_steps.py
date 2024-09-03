@@ -43,88 +43,89 @@ def step_impl(context, fullname, email, currentaddress, permanentaddress):
 @when(u'I press the "Check Box" button under "Elements"')
 def step_impl(context):
     print(u'STEP: When I press the "Check Box" button under "Elements"')
-
+    context.demoqa_pages.press_check_box()
 
 @when(u'I press the Expand Button near the "Home" section')
 def step_impl(context):
     print(u'STEP: When I press the Expand Button near the "Home" section')
-
+    context.demoqa_pages.press_expand_checkbox_home()
 
 @when(u'I press the checkbox labeled "Desktop"')
 def step_impl(context):
     print(u'STEP: When I press the checkbox labeled "Desktop"')
-
+    context.demoqa_pages.press_desktop_checkbox()
 
 @then(u'I should see the message: "You have selected : desktop notes commands"')
 def step_impl(context):
     print(u'STEP: Then I should see the message: "You have selected : desktop notes commands"')
-
+    context.demoqa_pages.checkbox_assert()
 
 @when(u'I press the "Radio Button" button under "Elements"')
 def step_impl(context):
     print(u'STEP: When I press the "Radio Button" button under "Elements"')
-
+    context.demoqa_pages.press_radio_button()
 
 @when(u'I select the "Yes" radio button')
 def step_impl(context):
     print(u'STEP: When I select the "Yes" radio button')
-
+    context.demoqa_pages.selecting_yes()
 
 @then(u'I should see the message "You have selected Yes"')
 def step_impl(context):
     print(u'STEP: Then I should see the message "You have selected Yes"')
-
+    context.demoqa_pages.assert_yes_radio_button()
 
 @when(u'I select the "Impressive" radio button')
 def step_impl(context):
     print(u'STEP: When I select the "Impressive" radio button')
-
+    context.demoqa_pages.selecting_impressive()
 
 @then(u'I should see the message "You have selected Impressive"')
 def step_impl(context):
     print(u'STEP: Then I should see the message "You have selected Impressive"')
-
+    context.demoqa_pages.assert_impressive_radio_button()
 
 @when(u'I attempt to select the "No" radio button')
 def step_impl(context):
     print(u'STEP: When I attempt to select the "No" radio button')
-
+    context.demoqa_pages.click_no_button()
 
 @then(u'the "No" radio button should be disabled')
 def step_impl(context):
     print(u'STEP: Then the "No" radio button should be disabled')
-
+    context.demoqa_pages.no_radio_button_disabled()
 
 @when(u'I press the "Buttons" button under "Elements"')
 def step_impl(context):
     print(u'STEP: When I press the "Buttons" button under "Elements"')
-
+    context.demoqa_pages.press_buttons_button()
 
 @when(u'I double click the "Double Click Me" button')
 def step_impl(context):
     print(u'STEP: When I double click the "Double Click Me" button')
-
+    context.demoqa_pages.press_double_click()
 
 @then(u'I should see the message "You have done a double click"')
 def step_impl(context):
     print(u'STEP: Then I should see the message "You have done a double click"')
-
+    context.demoqa_pages.assert_double_click()
 
 @when(u'I click the "Right Click Me" button')
 def step_impl(context):
     print(u'STEP: When I click the "Right Click Me" button')
-
+    context.demoqa_pages.press_right_click()
 
 @then(u'I should see the message "You have done a right click"')
 def step_impl(context):
     print(u'STEP: Then I should see the message "You have done a right click"')
-
+    context.demoqa_pages.assert_right_click()
 
 @when(u'I click the "Click Me" button')
 def step_impl(context):
     print(u'STEP: When I click the "Click Me" button')
-
+    context.demoqa_pages.press_click_me()
 
 @then(u'I should see the message "You have done a dynamic click"')
 def step_impl(context):
     print(u'STEP: Then I should see the message "You have done a dynamic click"')
+    context.demoqa_pages.assert_click_me()
