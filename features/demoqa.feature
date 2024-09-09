@@ -60,3 +60,15 @@ Feature: Testing the Opencart website
     When I press the "Buttons" button under "Elements"
     And I click the "Click Me" button
     Then I should see the message "You have done a dynamic click"
+
+  @home_link_button
+  Scenario: Pressing the "Home" link button
+    When I press the "Links" button under "Elements"
+    And I click the "Home" link button
+    Then I should be redirected to the Home page
+
+  @home_link_button_dynamic
+  Scenario: Pressing the dynamic Home link button
+    When I press the "Links" button under "Elements"
+    And I click the dynamic home link button
+    Then I should be redirected to the Home page

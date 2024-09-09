@@ -9,6 +9,7 @@ class DemoQa(BasePage):
     check_box = (By.ID, "item-1")
     radio_button = (By.ID, "item-2")
     buttons_button = (By.ID, "item-4")
+    links_button = (By.ID, "item-5")
     user_name = (By.ID, "userName")
     user_email = (By.ID, "userEmail")
     user_currentaddress = (By.ID, "currentAddress")
@@ -27,6 +28,12 @@ class DemoQa(BasePage):
     right_click_message = (By.ID, 'rightClickMessage')
     click_me_button = (By.XPATH, '//button[text()="Click Me"]')
     click_me_button_message = (By.ID, 'dynamicClickMessage')
+    home_link_button = (By.ID, 'simpleLink')
+    dynamic_link_button = (By.XPATH, '//*[@id="dynamicLink"]')
+    def webdriver_wait_clickable(self, element):
+        WebDriverWait(self.chrome, 10).until(
+            EC.element_to_be_clickable((element))
+        )
 
     def press_text_box(self):
         self.chrome.find_element(*self.text_box).click()
@@ -39,6 +46,9 @@ class DemoQa(BasePage):
 
     def press_buttons_button(self):
         self.chrome.find_element(*self.buttons_button).click()
+
+    def press_links_button(self):
+        self.chrome.find_element(*self.links_button).click()
 
     def enter_fullname(self, fullname):
         self.chrome.find_element(*self.user_name).send_keys(fullname)
@@ -138,4 +148,19 @@ class DemoQa(BasePage):
     def assert_click_me(self):
         message = self.chrome.find_element(*self.click_me_button_message)
         assert message.text == "You have done a dynamic click"
+
+    def press_home_button(self):
+        self.chrome.find_element(*self.home_link_button).click()
+
+    def verify_new_home_page(self):
+        self.chrome.switch_to.window(self.chrome.window_handles[1])
+
+        expected_url = "https://demoqa.com"
+        assert expected_url in self.chrome.current_url
+
+    def dynamic_link_text_click(self):
+        self.chrome.find_element(*self.dynamic_link_button).click()
+
+
+
 
