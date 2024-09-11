@@ -54,7 +54,6 @@ Feature: Testing the Opencart website
     And I click the "Right Click Me" button
     Then I should see the message "You have done a right click"
 
-
   @click_me_button
   Scenario: Pressing the "Click Me" button
     When I press the "Buttons" button under "Elements"
