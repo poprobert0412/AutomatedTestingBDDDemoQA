@@ -129,11 +129,6 @@ def step_impl(context):
 def step_impl(context):
     print(u'STEP: Then I should see the message "You have done a dynamic click"')
     context.demoqa_pages.assert_click_me()
-    
-@when(u'I press the "Links" button under "Elements"')
-def step_impl(context):
-    print(u'STEP: When I press the "Links" button under "Elements"')
-    context.demoqa_pages.press_links_button()
 
 @when(u'I click the "Home" link button')
 def step_impl(context):
@@ -149,4 +144,13 @@ def step_impl(context):
 def step_impl(context):
     print(u'STEP: When I click the dynamic home link button')
     context.demoqa_pages.dynamic_link_text_click()
-
+@when(u'I press the "Links" button under "Elements"')
+def step_impl(context):
+    print(u'STEP: When I press the "Links" button under "Elements"')
+    context.demoqa_pages.press_links_button()
+@when('I click on the "{link}" link')
+def step_impl(context, link):
+    context.demoqa_pages.click_on_the_link_api(link)
+@then('I should receive a response with status code "{statuscode}" and status text "{statustext}"')
+def step_impl(context, statuscode, statustext):
+    context.demoqa_pages.message_from_api(statuscode, statustext)

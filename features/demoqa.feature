@@ -75,15 +75,15 @@ Feature: Testing the Opencart website
   @api_links
 
   Scenario Outline: Verify link response and status code
-    Given I am on the DemoQA site
-    When I click on the "<link>" link
-    Then I should receive a response with status code "<statusCode>" and status text "<statusText>"
+    When I press the "Links" button under "Elements"
+    And I click on the "<link>" link
+    Then I should receive a response with status code "<statuscode>" and status text "<statustext>"
 
     Examples:
-      | link          | statusCode | statusText  |
+      | link          | statuscode | statustext  |
       | Created       | 201        | Created     |
       | No Content    | 204        | No Content  |
-      | Moved         | 301        | Moved       |
+      | Moved         | 301        | Moved Permanently       |
       | Bad Request   | 400        | Bad Request |
       | Unauthorized  | 401        | Unauthorized|
       | Forbidden     | 403        | Forbidden   |

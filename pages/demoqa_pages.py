@@ -1,3 +1,4 @@
+import requests
 from selenium.webdriver.common.by import By
 from pages.base_pages import BasePage
 from selenium.webdriver.support.ui import WebDriverWait
@@ -31,10 +32,13 @@ class DemoQa(BasePage):
     home_link_button = (By.ID, 'simpleLink')
     dynamic_link_button = (By.XPATH, '//*[@id="dynamicLink"]')
     def webdriver_wait_clickable(self, element):
-        WebDriverWait(self.chrome, 10).until(
-            EC.element_to_be_clickable((element))
+        return WebDriverWait(self.chrome, 10).until(
+            EC.element_to_be_clickable(element)
         )
-
+    def webdriver_wait_located(self,element):
+        return WebDriverWait(self.chrome, 10).until(
+            EC.presence_of_element_located(element)
+        )
     def press_text_box(self):
         self.chrome.find_element(*self.text_box).click()
 
@@ -161,6 +165,10 @@ class DemoQa(BasePage):
     def dynamic_link_text_click(self):
         self.chrome.find_element(*self.dynamic_link_button).click()
 
+    def click_on_the_link_api(self, link):
+        link_element = self.chrome.find_element(By.LINK_TEXT, link)
+        link_element.click()
 
-
-
+    def message_from_api(self, statuscode, statustext):
+        text_message = self.webdriver_wait_located((By.ID, "linkResponse"))
+        assert text_message.text == f"Link has responded with staus {statuscode} and status text {statustext}"
