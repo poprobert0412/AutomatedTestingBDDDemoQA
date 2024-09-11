@@ -71,3 +71,20 @@ Feature: Testing the Opencart website
     When I press the "Links" button under "Elements"
     And I click the dynamic home link button
     Then I should be redirected to the Home page
+
+  @api_links
+
+  Scenario Outline: Verify link response and status code
+    Given I am on the DemoQA site
+    When I click on the "<link>" link
+    Then I should receive a response with status code "<statusCode>" and status text "<statusText>"
+
+    Examples:
+      | link          | statusCode | statusText  |
+      | Created       | 201        | Created     |
+      | No Content    | 204        | No Content  |
+      | Moved         | 301        | Moved       |
+      | Bad Request   | 400        | Bad Request |
+      | Unauthorized  | 401        | Unauthorized|
+      | Forbidden     | 403        | Forbidden   |
+      | Not Found     | 404        | Not Found   |
