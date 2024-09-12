@@ -154,3 +154,4 @@ def step_impl(context, link):
 @then('I should receive a response with status code "{statuscode}" and status text "{statustext}"')
 def step_impl(context, statuscode, statustext):
     context.demoqa_pages.message_from_api(statuscode, statustext)
+
