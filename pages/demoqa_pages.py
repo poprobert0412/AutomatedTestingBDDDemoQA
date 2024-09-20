@@ -31,6 +31,9 @@ class DemoQa(BasePage):
     click_me_button_message = (By.ID, 'dynamicClickMessage')
     home_link_button = (By.ID, 'simpleLink')
     dynamic_link_button = (By.XPATH, '//*[@id="dynamicLink"]')
+    broken_links_images_button = (By.ID, "item-6")
+    tools_qa_valid_image = (By.XPATH, '//h1[@class="text-center"]/following-sibling::img[1]')
+    broken_image = (By.XPATH, '//h1[@class="text-center"]/following-sibling::img[2]')
     def webdriver_wait_clickable(self, element):
         return WebDriverWait(self.chrome, 10).until(
             EC.element_to_be_clickable(element)
@@ -53,6 +56,9 @@ class DemoQa(BasePage):
 
     def press_links_button(self):
         self.chrome.find_element(*self.links_button).click()
+
+    def press_broken_links_images_button(self):
+        self.chrome.find_element(*self.broken_links_images_button).click()
 
     def enter_fullname(self, fullname):
         self.chrome.find_element(*self.user_name).send_keys(fullname)
@@ -172,3 +178,13 @@ class DemoQa(BasePage):
     def message_from_api(self, statuscode, statustext):
         text_message = self.webdriver_wait_located((By.ID, "linkResponse"))
         assert text_message.text == f"Link has responded with staus {statuscode} and status text {statustext}"
+
+    def validate_the_image(self):
+        image = self.chrome.find_element(*self.tools_qa_valid_image)
+        is_valid = self.chrome.execute_script('return arguments[0].naturalWidth > 0;', image)
+        assert is_valid, "The first image is broken or invalid"
+
+    def validate_broken_image(self):
+        image = self.chrome.find_element(*self.broken_image)
+        is_broken = self.chrome.execute_script('return arguments[0].naturalWidth == 0;', image)
+        assert is_broken, "The second image is valid"

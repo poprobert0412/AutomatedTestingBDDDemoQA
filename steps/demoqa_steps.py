@@ -155,3 +155,36 @@ def step_impl(context, link):
 def step_impl(context, statuscode, statustext):
     context.demoqa_pages.message_from_api(statuscode, statustext)
 
+@when(u'I press the "Broken Links - Images" under "Elements"')
+def step_impl(context):
+    print(u'STEP: When I press the "Broken Links - Images" under "Elements"')
+    context.demoqa_pages.press_broken_links_images_button()
+
+@then(u'I should see a Valid Image')
+def step_impl(context):
+    print(u'STEP: Then I should see a Valid Image')
+    context.demoqa_pages.validate_the_image()
+
+@then(u'I should see a Broken Image')
+def step_impl(context):
+    print(u'STEP: Then I should see a Broken Image')
+    context.demoqa_pages.validate_broken_image()
+
+@when(u'I see a blue link saying "Click Here for Valid Link" and click it')
+def step_impl(context):
+    print(u'STEP: When I see a blue link saying "Click Here for Valid Link" and click it')
+
+
+@then(u'I am redirected to the main page')
+def step_impl(context):
+    print(u'STEP: Then I am redirected to the main page')
+
+
+@when(u'I should see a blue link saying "Click Here for Broken Link" and click it')
+def step_impl(context):
+    print(u'STEP: When I should see a blue link saying "Click Here for Broken Link" and click it')
+
+
+@then(u'I will be redirected to a page with status code 500')
+def step_impl(context):
+    print(u'STEP: Then I will be redirected to a page with status code 500')
